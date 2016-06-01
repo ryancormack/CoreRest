@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Restival.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Restival.Controllers
 {
@@ -12,15 +10,7 @@ namespace Restival.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Json(new Person("Ryan"));
+            return Json(new List<Person> { new Person("Ryan"), new Person("Mark")});
         }
-    }
-
-    public class Person {
-        public Person(string name) {
-            Name = name;
-        }
-
-        public string Name { get; }
-    }
+    }    
 }
