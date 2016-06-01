@@ -1,0 +1,1 @@
+A continually evolving work in progress so I can learn more about .NET core
