@@ -11,9 +11,9 @@ namespace Rest.Api.Controllers
     [Route("api/profile")]
     public class ProfileController : Controller
     {
-        private readonly FakeDataStore database;
-        public ProfileController() {
-            this.database = new FakeDataStore();
+        private readonly IDataStore database;
+        public ProfileController(IDataStore database) {
+            this.database = database;
         }
 
         [HttpGet]
