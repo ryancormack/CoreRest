@@ -1,12 +1,7 @@
-﻿namespace Rest.Core.Models
+﻿namespace Rest.Core.DatabaseModels
 {
     public class Nationality
     {
-        public Nationality(string country) {
-            this.Country = country;
-        }
-
-        public Nationality() { }
         public string CountryIsoCode { get; set; }
         public string Country { get; set; }
     }
