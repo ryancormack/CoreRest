@@ -35,6 +35,7 @@ namespace Rest
         public void Configure(IApplicationBuilder app)
         {
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }
