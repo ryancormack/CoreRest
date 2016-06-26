@@ -8,13 +8,25 @@ namespace Rest.Controllers
     {
         // GET: /<controller>/
         [Route("offline")]
-        public IActionResult Index()
+        public IActionResult Offline()
         {
             var viewmodel = new OfflineViewModel
             {
                 Number = 1
             };
-            return View(viewmodel);
+            return View("~/Features/Offline/offline.cshtml",viewmodel);
+        }
+
+        [Route("online")]
+        public IActionResult Online()
+        {
+            return View("~/Features/Offline/online.cshtml");
+        }
+
+        [Route("home")]
+        public IActionResult Home()
+        {
+            return View("~/Features/Offline/home.cshtml");
         }
     }
 

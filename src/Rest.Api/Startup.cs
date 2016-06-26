@@ -24,20 +24,11 @@ namespace Rest
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-            
-            // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-            builder.AddApplicationInsightsSettings(developerMode: true);
-
-            Configuration = builder.Build();
-            Console.WriteLine("started");
         }
-
-        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplicationInsightsTelemetry(Configuration);
             // Add framework services.
             services.AddMvc();
             services.AddSingleton<IDataStore, FakeDataStore>();
@@ -45,7 +36,7 @@ namespace Rest
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
             app.UseMvc();
             app.UseStaticFiles();
@@ -62,22 +53,6 @@ namespace Rest
                 Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\pages")),
                 RequestPath = new PathString("")
             });
-
-            loggerFactory
-                .WithFilter(new FilterLoggerSettings
-                    {
-                        { "Microsoft", LogLevel.Debug },
-                        { "System", LogLevel.Debug },
-                        { "Rest.Api", LogLevel.Debug }
-                    })
-                .AddConsole();
-            loggerFactory.AddDebug();
-
-            app.UseApplicationInsightsRequestTelemetry();
-            
-            app.UseDeveloperExceptionPage();
-
-            app.UseApplicationInsightsExceptionTelemetry();
         }
     }
 }
