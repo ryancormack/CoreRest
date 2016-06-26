@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Rest.Database;
 using Rest.DAL.Repository;
+using Rest.Database;
 
-namespace Restival
+namespace Rest
 {
     public class Startup
     {
