@@ -45,5 +45,4 @@ this.addEventListener('fetch', event => {
 this.addEventListener('message', function (event) {
     console.log('Message received ' + event.data);
     messageReceived = true;
-    if()
 });
