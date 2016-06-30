@@ -12,7 +12,7 @@ namespace Rest.Controllers
         {
             var viewmodel = new OfflineViewModel
             {
-                Number = 1
+                Number = 2
             };
             return View("~/Features/Offline/offline.cshtml",viewmodel);
         }
@@ -28,6 +28,15 @@ namespace Rest.Controllers
         {
             return View("~/Features/Offline/home.cshtml");
         }
+
+        [Route("latest")]
+        public IActionResult Latest() {
+            return Json(new LatestPost { PostName = "Hello World"});
+        }
+    }
+
+    public class LatestPost {
+        public string PostName { get; set; }
     }
 
     public class OfflineViewModel {

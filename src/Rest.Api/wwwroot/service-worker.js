@@ -1,6 +1,8 @@
 ﻿'use strict';
 
-var cacheVersion = 1;
+var cacheVersion = 1
+var messageReceived = false;
+
 var currentCache = {
     offline: 'offline-cache' + cacheVersion
 };
@@ -38,4 +40,10 @@ this.addEventListener('fetch', event => {
                         })
             );
     }
+});
+
+this.addEventListener('message', function (event) {
+    console.log('Message received ' + event.data);
+    messageReceived = true;
+    if()
 });
