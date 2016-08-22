@@ -1,13 +1,14 @@
-﻿@model Rest.Controllers.OfflineViewModel
+﻿@using System
+@model Rest.Api.Features.Offline.OfflineViewModel
 
-<html>
-<head>
+@{
+    Layout = "~/Features/Shared/_Layout.cshtml";
+}
 
-</head>
-<body>
-    @DateTimeOffset.UtcNow.Date
 
-    @Model.Number
-    You are OFFLINE
-</body>
-</html>
+<div>
+    This page was last update at @DateTimeOffset.UtcNow.ToString("g")
+</div>
+<div>
+    <img src="/images/view.png"/>
+</div>

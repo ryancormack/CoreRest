@@ -1,0 +1,43 @@
+﻿@using System
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hello World</title>
+    <script>
+
+// Register the service worker
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+}).catch(function(err) {
+    // registration failed :(
+    	console.log('ServiceWorker registration failed: ', err);
+    });
+}
+
+//navigator.serviceWorker.ready.then(function(reg) {
+
+//    // set up a message channel to communicate with the SW
+//        var channel = new MessageChannel();
+//    channel.port1.onmessage = function(e) {
+//        console.log(e);
+//        handleChannelMessage(e.data);
+//    }
+
+//    let mySw = reg.active;
+//    mySw.postMessage('updateBlog', [channel.port2]);
+//});
+    </script>
+</head>
+<body>
+    <div>
+        @DateTimeOffset.UtcNow.Date
+    </div>
+<div>
+    @RenderBody()
+</div>
+</body>
+</html>

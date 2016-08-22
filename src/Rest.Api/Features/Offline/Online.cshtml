@@ -1,37 +1,6 @@
-﻿
-<html>
-<head>
-
-</head>
-<body>
-    You are online
-
-
-    <script>
-
-// Register the service worker
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-    // Registration was successful
-    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-}).catch(function(err) {
-    // registration failed :(
-    	console.log('ServiceWorker registration failed: ', err);
-    });
+﻿@{
+    Layout = "~/Features/Shared/_Layout.cshtml";
 }
 
-navigator.serviceWorker.ready.then(function(reg) {  
 
-    // set up a message channel to communicate with the SW
-        var channel = new MessageChannel();
-    channel.port1.onmessage = function(e) {
-        console.log(e);
-        handleChannelMessage(e.data);
-    }
-      
-    mySW = reg.active;
-    mySW.postMessage('hello', [channel.port2]);
-});
-    </script>
-</body>
-</html>
+<div>This is the online page</div>
