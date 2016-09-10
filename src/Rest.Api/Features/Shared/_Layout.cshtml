@@ -34,7 +34,7 @@ if ('serviceWorker' in navigator) {
 </head>
 <body>
     <div>
-        @DateTimeOffset.UtcNow.Date
+        @DateTimeOffset.UtcNow.ToString("g")
     </div>
 <div>
     @RenderBody()
